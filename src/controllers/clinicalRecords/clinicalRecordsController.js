@@ -1,4 +1,4 @@
-import clinicalEquipmentModel from "../../models/clinicalEquipments.js";
+import clinicalRecordsModel from "../../models/clinicalRecord.js";
 const clinicalRecordsController = {};
 
 clinicalRecordsController.getClinicalRecord = async (req, res) => {

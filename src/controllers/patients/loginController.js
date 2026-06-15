@@ -21,8 +21,7 @@ loginController.login = async (req,res) =>{
             await response.save()
             return res.status(400).json({message: "Account blocked"})
         }
-        showTries = 5 - loginAttemps
-        return res.status(400).json({mesage: `Invalid password, u have ${showTries} tries` })
+        return res.status(400).json({mesage: `Invalid password` })
     }
     response.loginAttemps = 0
     response.timeOut = null

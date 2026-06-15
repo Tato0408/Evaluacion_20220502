@@ -23,4 +23,4 @@ const clinicalRecordSchema = new Schema ({
     strict: false
 });
 
-export default model ("dlinicalRecords", clinicalRecordSchema)
+export default model ("clinicalRecords", clinicalRecordSchema)
