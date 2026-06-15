@@ -7,6 +7,9 @@ import specialityRoute from './src/routes/speciality.js'
 import loginRoute from './src/routes/login.js'
 import logout from './src/routes/logout.js'
 import recoveryPasswordRoute from './src/routes/recoveryPassword.js'
+import appointmentRoute from './src/routes/appointments.js'
+import clinicalRecordRoute from './src/routes/clinicalRecord.js'
+import clinicalEquipmentRoute from './src/routes/clinicalEquipment.js'
 const app = express()
 
 app.use(cors({
@@ -19,6 +22,9 @@ app.use(cookieParser())
 app.use("/api/speciality", specialityRoute)
 app.use("/api/patient", patientRoute)
 app.use("/api/registerPatient", registerPatientRoute)
+app.use("/api/appointment", appointmentRoute)
+app.use("/api/clinicalRecord", clinicalRecordRoute)
+app.use("/api/clinicalEquipment", clinicalEquipmentRoute)
 
 app.use("/api/login",loginRoute)
 app.use("/api/logout",logout)

@@ -21,7 +21,7 @@ specialityController.updateSpeciality = async(req,res) => {
         } = req.body
         
         const response = await specialityModel.findById(req.params.id)
-
+        if (!response) return res.status(400).json({message: "Not found"})
         const updateData = {
             specialityName,
             description,
