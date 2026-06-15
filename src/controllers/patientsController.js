@@ -71,3 +71,5 @@ patientController.deletePatient = async (req, res) => {
     }
 }
 
+export default patientController
+
