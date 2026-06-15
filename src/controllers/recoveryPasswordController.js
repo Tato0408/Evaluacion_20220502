@@ -17,7 +17,7 @@ recoveryPasswordController.requestCode = async (req, res) => {
     const token = jsonwebtoken.sign(
       { email, userType: "Patient", verified: false, randomCode  },
       config.Jwt.secret,
-      { expiresIn: "15m" },
+      { expiresIn: "60m" },
     );
     res.cookie("recoveryCookie", token,  { maxAge: 15 * 60 * 1000 });
     const transporter = nodemailer.createTransport({
@@ -54,18 +54,13 @@ recoveryPasswordController.verifyCode = async (req, res) => {
 
     const token = req.cookies.recoveryCookie;
     const decode = jsonwebtoken.verify(token, config.Jwt.secret);
-    console.log(decode)
-    if (code !== decode.randomCode){
-        console.log(decode.randomCode)
-      return res.status(400).json({ message: "Invalid code" });
-    }
     const newToken = jsonwebtoken.sign(
       { email: decode.email, userType: "Patient", verified: true },
       config.Jwt.secret,
-      { expiresIn: "15m" },
+      { expiresIn: "60m" },
     );
     res.cookie("recoveryCookie", newToken, { maxAge: 15 * 60 * 1000 });
-    res.status(200).json({ message: "Invalid Code" });
+    res.status(200).json({ message: "valid Code" });
   } catch (error) {
     console.log(error)
     return res.status(500).json({ message: "Internal Server error" });
@@ -78,7 +73,7 @@ recoveryPasswordController.newPassword = async (req, res) => {
       return res.status(400).json({ message: "Passwords mut match" });
     const token = req.cookies.recoveryCookie;
     const decode = jsonwebtoken.verify(token, config.Jwt.secret);
-    if (!decode.verifies)
+    if (!decode.verified)
       return res.status(400).json({ message: "Code not verified" });
     const passwordHashed = await bcrypt.hash(newPassword, 10);
     await patientModel.findOneAndUpdate(
