@@ -1,4 +1,4 @@
-import patientsModel from '../models/patients.js'
+import patientsModel from '../../models/patients.js'
 import {v2 as cloudinary} from 'cloudinary'
 const patientController = {};
 

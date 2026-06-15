@@ -1,7 +1,7 @@
-import patientModel from '../models/patients.js'
+import patientModel from '../../models/patients.js'
 import bcrypt from 'bcryptjs'
 import jsonwebtoken from 'jsonwebtoken'
-import { config } from '../../config.js'
+import { config } from '../../../config.js'
 
 const loginController = {}
 

@@ -1,5 +1,5 @@
 import express from 'express'
-import patientController from '../controllers/patientsController.js'
+import patientController from '../controllers/patients/patientsController.js'
 import upload from '../utils/cloudinaryConfig.js'
 const router = express.Router()
 

@@ -2,8 +2,8 @@ import jsonwebtoken from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import * as nodemailer from "nodemailer";
-import patientModel from "../models/patients.js";
-import { config } from "../../config.js";
+import patientModel from "../../models/patients.js";
+import { config } from "../../../config.js";
 
 const recoveryPasswordController = {};
 
