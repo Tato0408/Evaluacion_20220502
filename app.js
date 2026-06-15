@@ -3,6 +3,9 @@ import express from 'express'
 import cookieParser from 'cookie-parser'
 import registerPatientRoute from './src/routes/registerPatient.js'
 import patientRoute from './src/routes/patient.js'
+import loginRoute from './src/routes/login.js'
+import logout from './src/routes/logout.js'
+import recoveryPasswordRoute from './src/routes/recoveryPassword.js'
 const app = express()
 
 app.use(cors({
@@ -14,5 +17,9 @@ app.use(cookieParser())
 
 app.use("/api/patient", patientRoute)
 app.use("/api/registerPatient", registerPatientRoute)
+
+app.use("/api/login",loginRoute)
+app.use("/api/logout",logout)
+app.use("/api/recovery", recoveryPasswordRoute)
 
 export default app

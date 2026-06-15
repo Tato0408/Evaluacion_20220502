@@ -50,8 +50,8 @@ patientController.updatePatient = async(req,res) => {
         }
 
         const payload = await patientsModel.findByIdAndUpdate(req.params.id, updateData, {new: true})
-        if(!payload) return res.staus(400).json({mesage: "Patient can't be updated"})
-        return res.staus(200).json({message: "Data Updated"})
+        if(!payload) return res.status(400).json({mesage: "Patient can't be updated"})
+        return res.status(200).json({message: "Data Updated"})
     } catch (error) {        
         console.log(error)
         return res.status(500).json({message: "Internal Server error"})

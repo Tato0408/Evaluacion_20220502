@@ -28,21 +28,6 @@ registerPatientController.insertPatient = async (req, res) => {
       return res.status(400).json({ message: "Patient alredy exist", data: existEmail });
     const passwordHashed = await bcrypt.hash(password, 10);
     const randomCode = crypto.randomBytes(3).toString("hex");
-    const newPatient = new patientsModel({
-      name,
-      lastname,
-      email,
-      password: passwordHashed,
-      birthdate,
-      phone,
-      address,
-      phoneEmergencyContact,
-      isVerified,
-      timeOut,
-      loginAttemps,
-      profilePhoto: req.file.path,
-      public_id: req.file.filename,
-    });
     const token = jsonwebtoken.sign(
       {
         randomCode,
@@ -147,3 +132,4 @@ registerPatientController.verifyCode = async (req, res) => {
 };
 
 export default registerPatientController
+
